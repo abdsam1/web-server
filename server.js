@@ -5,8 +5,9 @@ var middleware=require('./middleware.js');
 
 app.use(middleware.logger);
 
-app.get('/about',middleware.authentication,function(req,res){
+app.get('/about',middleware.authentication,function(req,res,next){
 	res.send('About Us!');
+	next();
 });
 
 app.use(express.static(__dirname+'/Public'));
